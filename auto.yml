@@ -1,0 +1,27 @@
+name: Auto Commit
+
+on:
+  schedule:
+    - cron: "0 0 * * *"   # runs every day
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v3
+
+      - name: Make changes
+        run: |
+          echo "Updated on $(date)" >> log.txt
+
+      - name: Commit changes
+        run: |
+          git config --global user.name "your-username"
+          git config --global user.email "your-email"
+
+          git add .
+          git commit -m "daily auto commit"
+          git push
