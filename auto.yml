@@ -25,3 +25,4 @@ jobs:
           git add .
           git commit -m "daily auto commit"
           git push
+#event closed 
